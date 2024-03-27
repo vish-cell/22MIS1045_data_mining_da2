@@ -1,0 +1,12 @@
+data = readtable('Salary Data.csv');  
+salary = data.Salary;
+Z = linkage(salary, 'complete'); 
+figure;
+dendrogram(Z, 'Orientation', 'top');  
+title('Dendrogram for Hierarchical Clustering (Top to Bottom)');
+xlabel('Data Points');
+ylabel('Distance');
+ylim([0, max(Z(:, 3)) + 10]);  
+c = cluster(Z, 'Maxclust', 3);  
+disp('Cluster indices:');
+disp(c);
